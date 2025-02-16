@@ -24,7 +24,7 @@ jobs:
 
     - name: Run Deployment Script
       env:
-        ENV_NOTION_Sharon52: ${{ secrets.ENV_NOTION_Sharon52 }}
+        ENV_NOTION_ID: ${{ secrets.ENV_NOTION_Sharon52 }}
         ENV_DATABASE_ID: ${{ secrets.ENV_DATABASE_19c5bec123738002a7c1c3f6a21733ea }}
         MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_058086cfb3deaf32e70b23fb455e10e4-1654a412-974b550c }}
         MAILGUN_DOMAIN: ${{ secrets.MAILGUN_SUZHOU }}
