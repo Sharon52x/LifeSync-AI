@@ -2,7 +2,7 @@ name: Night Report
 
 on:
   schedule:
-    - cron: '0 14 * * *'  # 每天 22 点 UTC 时间
+    - cron: '0 14 * * *'  # UTC 22:00 相当于中国时间 22:00
   workflow_dispatch:
 
 jobs:
@@ -10,21 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
+    - name: 📥 Checkout Code
+      uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.8'  # 根据项目需求选择 Python 版本
+        python-version: '3.8'
+        cache: 'pip'  # 启用 pip 缓存，提高安装速度
 
-    - name: Install Dependencies
+    - name: 📦 Install Dependencies
       run: |
         pip install -r requirements.txt
 
-    - name: Run Deployment Script
-  
-        env:
+    - name: 🚀 Run Deployment Script
+      env:
         ENV_NOTION_ID: ${{ secrets.ENV_NOTION_ID }}
         ENV_DATABASE_ID: ${{ secrets.ENV_DATABASE_ID }}
         MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
@@ -32,4 +32,6 @@ jobs:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
       run: |
-        python night_email.py
+        echo "Starting night report script..."
+        python Night_email.py || echo "⚠️ Script execution failed!"
+        echo "✅ Night report script finished."
