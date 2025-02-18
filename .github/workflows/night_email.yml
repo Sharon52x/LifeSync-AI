@@ -24,11 +24,6 @@ jobs:
 
     - name: Run Deployment Script
       env:
-        ENV_NOTION_TOKEN: ${{ secrets.ENV_NOTION_Sharon52 }}
-        ENV_DATABASE_ID: ${{ secrets.ENV_DATABASE_19c5bec123738002a7c1c3f6a21733ea }}
-        MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_058086cfb3deaf32e70b23fb455e10e4-1654a412-974b550c }}
-        MAILGUN_DOMAIN: ${{ secrets.MAILGUN_SUZHOU }}
-        AI_API_KEY: ${{ secrets.AI_API_sk-proj-CgW6nxqp7gl1TV5utJDF5oBWCd71z5OGOK6_T99L_zhXS11kTolXbm9TnKJ351VwLsACSo8vg-T3BlbkFJgO6_ioFJzUGiA5tYiXkS7s1LnFsm7XaZueWtrzLcZkZYJ6AsPdIIDc4rE69Q8z1BjioRwmpT0A }}
-        OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_315d6b155f3e6b4442b00454fafcfc37 }}
+        
       run: |
         python night_email.py
